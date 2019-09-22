@@ -1,0 +1,55 @@
+@import "~styles/lib";
+
+.Task {
+  position: relative;
+  padding: 1em;
+  min-width: 12em;
+  max-width: 40em;
+
+  &:hover {
+    background: white;
+  }
+
+  &--type {
+    &-flight {
+      color: $grey-light;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.2em;
+    font-weight: 600;
+  }
+
+  &__actions {
+    margin-left: auto;
+
+    &__item {
+      padding: 0.3em 0.6em 0.1em;
+      opacity: 0;
+
+      &:hover,
+      &:focus,
+      &:active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:hover {
+    .Task__actions__item {
+      opacity: 0.5;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+    color: $grey-light;
+  }
+}

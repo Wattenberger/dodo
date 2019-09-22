@@ -1,0 +1,155 @@
+@import "~styles/lib";
+
+.Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 2.5em;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    transition: all 0.2s ease-out;
+    // border: 1px solid;
+    color: white;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    font-size: 0.875em;
+    font-weight: 500;
+
+    a {
+        border-bottom: none;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .Icon {
+        margin: 0.6em;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: rgba(white, 0.5);
+        text-align: center;
+        margin: 0 auto;
+        left: 50%;
+        top: 50%;
+        margin-top: -5px;
+        margin-left: -5px;
+        opacity: 0;
+    }
+
+    &--keep-on-one-line {
+        line-height: 1em;
+        white-space: nowrap;
+    }
+
+    &--can-be-multiple-lines {
+        white-space: normal;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    @keyframes buttonClick {
+        0%   { opacity: 0; transform: scale(1); }
+        15%  { opacity: 1; }
+        80%  { transform: scale(30); opacity: 0; }
+        100% { transform: scale(30); }
+    }
+
+    //animation
+    &:active {
+        &:before {
+            animation: buttonClick 2s ease-out;
+        }
+    }
+
+    &--style-type {
+        &-default {
+            color: $text-color;
+            // border: 1px solid;
+            // border-radius: 30px;
+            white-space: nowrap;
+            background: white;
+            box-shadow: none;
+
+            &:hover,
+            &:focus {
+                // background-color: $grey-lighter;
+                border-color: darken($grey-lighter, 5%);
+                background: $grey-lightest;
+                // box-shadow: $box-shadow-card;
+            }
+        }
+
+        &-primary {
+            background: $accent-1;
+            // border-color: $accent-1;
+            font-weight: 600;
+
+            &:hover,
+            &:focus {
+                background: $accent-1-dark;
+                // border-color: $accent-1-dark;
+            }
+
+            a {
+                color: white;
+            }
+        }
+
+        &-link {
+            background: none;
+            border: none;
+            font-weight: 600;
+            padding: 0.5em 1em;
+            color: $accent-2;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+                background: white;
+            }
+        }
+    }
+
+    &--size {
+        &-s {
+            padding: 0.4em 1.1em;
+            font-size: 0.75em;
+        }
+        &-l {
+            padding: 14px 36px 14px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        &-xl {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1.2em 3.25em;
+
+            @media(max-width: 600px) {
+                padding-left: 2em;
+                padding-right: 2em;
+            }
+        }
+    }
+
+    &:disabled {
+        background: darken($grey-lighter, 10%);
+        color: $grey-medium;
+        border-color: darken($grey-lighter, 10%);
+        pointer-events: none;
+    }
+}

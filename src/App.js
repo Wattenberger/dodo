@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from 'react';
+import GoogleAuth from './GoogleAuth'
+import FirebaseWrapper from './FirebaseWrapper'
+import Events from 'components/Events/Events'
+import Tasks from 'components/Tasks/Tasks'
+
+import './App.scss'
+import './styles/global.scss'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GoogleAuth>
+        <FirebaseWrapper>
+          <div className="App__wrapper">
+            <Events />
+            <div className="App__wrapper__tasks">
+              <Tasks />
+            </div>
+          </div>
+        </FirebaseWrapper>
+      </GoogleAuth>
     </div>
   );
 }

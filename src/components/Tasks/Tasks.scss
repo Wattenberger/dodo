@@ -1,0 +1,18 @@
+@import "~styles/lib";
+
+.Tasks {
+  max-width: 40em;
+
+  &__filters {
+    // margin: 0 0.6em;
+
+    .Form__fields {
+      display: flex;
+      align-items: center;
+
+      .FormField {
+        margin: 0.3em;
+      }
+    }
+  }
+}

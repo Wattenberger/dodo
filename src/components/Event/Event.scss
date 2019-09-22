@@ -1,0 +1,47 @@
+@import "~styles/lib";
+
+.Event {
+  margin: 1em;
+  position: relative;
+
+  &--type {
+    &-flight {
+      color: $grey-light;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: -1.1em;
+    top: 0.6em;
+    color: $grey-light;
+    transform: translateY(-50%);
+  }
+
+  &__title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.2em;
+    font-weight: 600;
+  }
+
+  &__attendees {
+    font-weight: 400;
+    color: $grey-light;
+    font-size: 0.8em;
+    padding-left: 2em;
+    margin-left: 1em;
+  }
+  &__location {
+    font-weight: 400;
+    color: $grey-light;
+    font-size: 0.8em;
+    padding-left: 2em;
+  }
+
+  &__date {
+    font-size: 0.8em;
+    color: $grey-light;
+  }
+}

@@ -1,0 +1,74 @@
+@import "~styles/lib";
+
+@import url('https://rsms.me/inter/inter.css');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.011em;
+  background: $background-color;
+  color: $text-color;
+}
+
+select {
+  padding: 1.5em 0.9em 0.55em;
+  background: white;
+  color: $grey-medium;
+  border: 1px solid $grey-lighter;
+  appearance: none;
+  font-size: 1em;
+  border-radius: 2px;
+
+  &:active,
+  &:focus {
+      border-color: $grey-light;
+      outline: none;
+  }
+}
+
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=number],
+input[type=password],
+textarea {
+  font-family: 'Inter', sans-serif;
+  padding: 0.55em 0.9em 0.55em;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 400;
+  outline: none;
+  border-radius: 2px;
+  outline: none;
+  border: 1px solid $grey-lighter;
+
+  &--select {
+      width: 100%;
+      padding: 0.8em 0.6em;
+  }
+
+  &:active,
+  &:focus {
+      border-color: $accent-1;
+  }
+}
+textarea:disabled, input:not([type]):disabled, input[type="color" i]:disabled, input[type="date" i]:disabled, input[type="datetime" i]:disabled, input[type="datetime-local" i]:disabled, input[type="email" i]:disabled, input[type="month" i]:disabled, input[type="password" i]:disabled, input[type="number" i]:disabled, input[type="search" i]:disabled, input[type="tel" i]:disabled, input[type="text" i]:disabled, input[type="time" i]:disabled, input[type="url" i]:disabled, input[type="week" i]:disabled {
+  background: $grey-lighter;
+}
+
+textarea {
+  min-height: 6em;
+  padding-top: 1em;
+}
+
+
+button {
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+@import "~styles/lib";
+
+.ButtonGroup {
+  display: flex;
+
+  & .Button {
+    border-radius: 2px 0 0 2px;
+
+    & + .Button {
+      margin-left: 0;
+      border-left-width: 0;
+      border-radius: 0 0 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 2px 2px 0;
+    }
+  }
+
+  & + .ButtonGroup {
+      margin-left: 1em;
+  }
+}

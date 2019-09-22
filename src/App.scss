@@ -1,0 +1,27 @@
+.App {
+  min-height: 90vh;
+  padding: 1.6em 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 700px) {
+    padding: 1em 1em 3em;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: center;
+    width: 100%;
+
+    &__tasks {
+      flex: 1;
+
+      @media (max-width: 700px) {
+        margin-top: 3em;
+      }
+    }
+  }
+}

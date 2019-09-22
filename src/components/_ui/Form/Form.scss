@@ -1,0 +1,338 @@
+@import "~styles/lib";
+
+.Form {
+    &Field {
+        padding: 0.6em 0;
+        width: 100%;
+        position: relative;
+
+        &--is-required {
+            .FormField__label {
+                &:after {
+                    content: "*";
+                    opacity: 0.75;
+                    margin-left: 3px;
+                }
+            }
+        }
+
+        &--is-hidden {
+            height: 0;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        &--type-select {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &--type {
+            &-select {
+                position: relative;
+
+                .FormField__wrapper {
+                    &:before {
+                        content: "▼";
+                        position: absolute;
+                        right: 1.25em;
+                        font-size: 0.75em;
+                        top: 40%;
+                        opacity: 0.7;
+                        pointer-events: none;
+                    }
+                }
+            }
+
+            &-text,
+            &-textarea,
+            &-email,
+            &-url,
+            &-number,
+            &-password,
+            &-select,
+            &-multi-select,
+            &-createable-select {
+                input[type=text],
+                input[type=email],
+                input[type=url],
+                input[type=number],
+                input[type=password] {
+                    padding: 1.5em 0.9em 0.55em;
+                }
+
+                ::placeholder {
+                    color: white;
+                    transition: all 0.3s ease-out;
+                }
+
+                .FormField {
+                    &__label {
+                        display: block;
+                        position: absolute;
+                        top: 1.15em;
+                        left: 1.2em;
+                        transition: all 0.2s ease-out;
+                        pointer-events: none;
+                        font-size: 0.9em;
+                        color: $grey-light;
+                    }
+
+                    &__input:focus + .FormField__label,
+                    &__input--select + .FormField__label,
+                    &__input--is-populated + .FormField__label {
+                        font-size: 0.8em;
+                        top: 0.4em;
+                        transition: all 200ms ease-out;
+                    }
+
+                    &__input:focus,
+                    &__input--select,
+                    &__input--is-populated {
+                        &::placeholder {
+                            color: $grey-dark;
+                        }
+                    }
+
+                    &__input:focus + .FormField__label {
+                        color: $accent-1;
+                    }
+
+                    &__input {
+                        // width: calc(100% + 0.6em);
+                        width: 100%;
+                        padding: 1.5em 0.9em 0.55em;
+
+                        &:active,
+                        &:focus {
+                            padding: 1.5em 0.9em 0.55em;
+                            border-color: $accent-1;
+                        }
+
+                        &--select {
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                &-textarea,
+                &-select {
+                    .FormField {
+                        &__label {
+                            top: 0;
+                        }
+                    }
+                }
+
+
+                &.FormField--size {
+                    &-s {
+                        font-size: 0.96em;
+
+                        input[type=text],
+                        input[type=email],
+                        input[type=url],
+                        input[type=number],
+                        input[type=password] {
+                            padding: 0.8em 0.7em;
+                        }
+
+                        .FormField__label {
+                            top: 0.8em;
+                        }
+
+                        .FormField__input:focus + .FormField__label,
+                        .FormField__input--select + .FormField__label,
+                        .FormField__input--is-populated + .FormField__label {
+                            top: -1.6em;
+                        }
+                    }
+                }
+            }
+
+            &-checkbox {
+                text-align: left;
+
+                @keyframes popInCheckbox {
+                    0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+                   80% { opacity: 0.5; transform: translate(-50%, -50%) scale(2.6); }
+                  100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+                }
+
+                .FormField__wrapper {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+
+                .FormField__label {
+                    flex: 1;
+                    max-width: calc(100% - 2.5em);
+                    cursor: pointer;
+                }
+
+                &.FormField--is-populated {
+                    .FormField__wrapper:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0.95em;
+                        height: 1em;
+                        width: 1em;
+                        background: $accent-1;
+                        border-radius: 100%;
+                        opacity: 0;
+                        transform: translate(-50%, -50%)  scale3d(0, 0, 1);
+                        animation: popInCheckbox 0.16s ease-out;
+                        animation-fill-mode: forwards;
+                    }
+                }
+            }
+        }
+
+        &__checkbox {
+            position: relative;
+            height: 1.7em;
+
+            &-icon {
+                position: absolute;
+                top: 50%;
+                margin-top: 0.15em;
+                left: 0.45em;
+                width: 1em;
+                height: 1em;
+                color: $accent-1;
+                transform: translateY(-50%);
+            }
+        }
+
+        &__input--checkbox {
+            margin-right: 1em;
+            appearance: none;
+            background: white;
+            border: 1px solid $grey-medium;
+            height: 1.6em;
+            width: 1.6em;
+            border-radius: 2px;
+            flex: none;
+            cursor: pointer;
+
+            &:focus,
+            &:active {
+                outline: none;
+                border-color: $accent-1;
+
+                & + .FormField__label {
+                    color: $accent-1;
+                }
+            }
+
+            &:checked {
+                background: $accent-2;
+            }
+        }
+
+        &--size {
+            &-s {
+                font-size: 0.96em;
+            }
+        }
+
+        &__wrapper {
+            //border: 1px solid blue;
+            position: relative;
+        }
+
+        &__error {
+            width: 100%;
+            font-size: 0.9em;
+            padding-left: 1em;
+            text-align: left;
+            background: lighten($grey-lighter, 3.5%);
+            border-left: 3px solid orange;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-top: 6px;
+            margin-bottom: -10px;
+            // transform: translate3d(0, 1em, 0);
+            // z-index: -1;
+            // animation: slideDownSmall 200ms ease-out;
+            min-width: 100%;
+
+            @media(max-width: 500px) {
+                margin-bottom: 6px;
+            }
+
+            b {
+                font-weight: 550;
+            }
+        }
+
+        &--type-multi-select,
+        &--type-createable-select {
+            .FormField__label {
+                top: 0.5em;
+            }
+        }
+
+        .FormField__input--multi-select,
+        .FormField__input--createable-select {
+            padding: 0 !important;
+        }
+
+        .FormField__multi,
+        .FormField__createable {
+            &__control {
+                border: 1px solid $grey-lighter;
+                border-radius: 2px;
+
+                &--is-focused,
+                &--menu-is-open {
+                    &,
+                    &:hover {
+                        border-color: $accent-1;
+                        box-shadow: none;
+                    }
+                }
+            }
+            &__menu {
+                margin-top: -0.3em;
+                border-radius: 2px;
+            }
+            &__value-container {
+                padding: 1.4em 0.9em 0.3em;
+            }
+            &__single-value{
+                top: 63%;
+            }
+            &__placeholder {
+                display: none;
+            }
+        }
+    }
+
+    &__errors {
+        width: 100%;
+        font-size: 0.9em;
+        padding-left: 1em;
+        text-align: left;
+        background: lighten($grey-lighter, 3.5%);
+        border-left: 3px solid orange;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 0;
+        margin-bottom: 2em;
+
+        @media(max-width: 500px) {
+            margin-bottom: 1em;
+        }
+    }
+
+    &__buttons {
+        margin-top: 1em;
+    }
+}
