@@ -22,7 +22,7 @@ const Task = ({ name, context, tags=[], type, contextColors, tagColors, onEdit, 
           { context }
         </div>
         <div className="Task__tags">
-          { tags.map((d, i) => (<>
+          { (tags || []).map((d, i) => (<>
             {!!i && ", "}
             <span style={{color: tagColors[d]}}>{ d }</span>
           </>)) }
